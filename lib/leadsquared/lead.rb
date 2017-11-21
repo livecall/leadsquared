@@ -5,8 +5,8 @@ module Leadsquared
   class Lead < ApiConnection
     SERVICE = '/v2/LeadManagement.svc/'.freeze
 
-    def initialize
-      super(SERVICE)
+    def initialize(connection = nil)
+      super(SERVICE, connection)
     end
 
     def get_meta_data

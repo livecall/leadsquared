@@ -5,8 +5,8 @@ module Leadsquared
   class Activity < ApiConnection
     SERVICE = '/v2/ProspectActivity.svc/'.freeze
 
-    def initialize
-      super(SERVICE)
+    def initialize(connection = nil)
+      super(SERVICE, connection)
     end
 
     def get_activities(lead_id, activity_event_id, offset = 0, row_count = 10)

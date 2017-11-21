@@ -2,8 +2,8 @@ module Leadsquared
   class ApiConnection
     attr_reader :connection
 
-    def initialize(service)
-      @connection = Leadsquared::Client.new
+    def initialize(service, connection = nil)
+      @connection = connection || Leadsquared::Client.new
       @service = service
     end
 
@@ -18,6 +18,7 @@ module Leadsquared
       when 200
         return JSON.parse response.body
       when 400
+        puts response.body
         raise InvalidRequestError.new("Bad Request")
       when 401
         raise InvalidRequestError.new("Unauthorized Request")
